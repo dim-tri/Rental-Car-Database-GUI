@@ -1,12 +1,12 @@
 package home.transaction.pop_up;
 
 import java.io.IOException;
-
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import util.PopUpController;
 
-public class EditTransactionController {
+public class EditTransactionController extends PopUpController{
 
 
 	//Apply Button Action Handler

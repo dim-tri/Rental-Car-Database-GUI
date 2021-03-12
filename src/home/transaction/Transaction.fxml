@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="948.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.transaction.TransactionController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="948.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.transaction.TransactionController">
    <children>
       <Label alignment="BASELINE_CENTER" prefHeight="35.0" prefWidth="949.0" text="Transaction History">
          <font>
@@ -24,7 +24,7 @@
       <Separator prefWidth="200.0" />
       <HBox>
          <children>
-            <Button mnemonicParsing="false" onAction="#btnAddTransactionOnAction" text="+Add Transaction" textFill="WHITE">
+            <Button fx:id="btnAddTransaction" mnemonicParsing="false" onAction="#btnAddTransactionOnAction" text="+Add Transaction" textFill="WHITE">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin></Button>
@@ -106,7 +106,7 @@
             <Insets bottom="10.0" />
          </VBox.margin>
       </HBox>
-      <TableView fx:id="transactionTable" prefHeight="430.0" prefWidth="948.0">
+      <TableView fx:id="transactionTable" prefHeight="900.0" prefWidth="948.0">
         <columns>
             <TableColumn fx:id="dateColumn" prefWidth="73.0" text="Date" />
             <TableColumn fx:id="carIdColumn" prefWidth="31.0" text="ID" />

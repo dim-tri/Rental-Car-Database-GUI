@@ -1,24 +1,34 @@
 package home.transaction.pop_up;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import util.PopUpController;
+//ChoiceBox carIdBoxAdd --> TextField carIdTextFieldAdd 
+//ChoiceBox clientIdBoxAdd --> TextField clientIdTextFieldAdd
 
-public class AddTransactionController {
+public class AddTransactionController extends PopUpController{
 
 	@FXML
 	private DatePicker dateBoxAdd;
+	@FXML
+	private TextField carIdTextFieldAdd;
+	@FXML
+	private TextField clientIdTextFieldAdd;
+	
+	@Override
+	public void InitializeController() {
+		carIdTextFieldAdd.setText(this.getHomeController().getSelectedCar());
+		clientIdTextFieldAdd.setText(this.getHomeController().getSelectedClient());		
+	}
 	
 	//Add Transaction Button Action Handler
 	public void btnAddTransactionAddOnAction(ActionEvent event) throws IOException{
-		//String date = dateBoxAdd.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-		dateBoxAdd.setValue(LOCAL_DATE("01/01/2020"));
+
 	}	
 	
 	//Cancel button, Closes Window
@@ -26,11 +36,6 @@ public class AddTransactionController {
 		((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
 	}
 	
-	public static final LocalDate LOCAL_DATE (String dateString){
-	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-	    LocalDate localDate = LocalDate.parse(dateString, formatter);
-	    return localDate;
-	}
 	
 	
 }

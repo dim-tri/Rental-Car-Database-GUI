@@ -1,10 +1,13 @@
 package util;
 
 import java.io.IOException;
+
+import home.HomeController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -22,20 +25,35 @@ public final class PopUpWindow {
 	 
 	 @return The new window
 	 */
-	public static Stage NewBorderPaneWindow(String title, String fxml, StageStyle stageStyle, Modality modality, Boolean wait) {		
+	public static Stage NewBorderPaneWindow(String title, String fxml, StageStyle stageStyle, Modality modality, Boolean wait, HomeController home, Controller parent) {		
 		try {	
 			Stage window = new Stage();				
-			BorderPane layout;
+			
 			System.out.println("Loading " + fxml);
-			layout = (BorderPane)FXMLLoader.load(PopUpWindow.class.getResource(fxml));			
+			//layout = (BorderPane)FXMLLoader.load(PopUpWindow.class.getResource(fxml));
+			FXMLLoader fxmlLoader = new FXMLLoader(PopUpWindow.class.getResource(fxml));
+			BorderPane layout = fxmlLoader.load();
+			
 			Scene scene = new Scene(layout);
 			scene.getStylesheets().add(PopUpWindow.class.getResource("../app/application.css").toExternalForm());
 			
+			PopUpController controller = fxmlLoader.getController();
+			if(controller != null) {
+				controller.setHomeController(home);
+				controller.setParent(parent);
+				System.out.println("Home Controller: " + home);
+				System.out.println("Parent Controller: " + parent);
+				//System.out.println("Parent Controller: " + parent.toString());
+				
+				controller.InitializeController();
+			}
 			window.setTitle(title);			
 			window.setScene(scene);
 			window.initModality(modality);
 			window.initStyle(stageStyle);
 			window.setResizable(false);
+			
+			window.getIcons().add(new Image(PopUpWindow.class.getResourceAsStream("../images/icon.png")));
 			
 			if(wait) {
 				window.showAndWait();
@@ -49,6 +67,9 @@ public final class PopUpWindow {
 			e.printStackTrace();			
 			return null;
 		}		
+	}
+	public static Stage NewBorderPaneWindow(String title, String fxml, StageStyle stageStyle, Modality modality, Boolean wait) {
+		return NewBorderPaneWindow(title, fxml, stageStyle, modality, wait, null, null);
 	}
 	
 	public static Boolean ExitConfirmation(Stage window) {

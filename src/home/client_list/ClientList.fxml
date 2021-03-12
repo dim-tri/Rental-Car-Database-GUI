@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="948.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.client_list.ClientListController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="948.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.client_list.ClientListController">
    <children>
       <Label alignment="BASELINE_CENTER" prefHeight="35.0" prefWidth="959.0" text="Client List">
          <font>
@@ -35,7 +35,7 @@
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin></Button>
-            <Button mnemonicParsing="false" onAction="#btnTestOnAction" text="TEST" />
+            <Button mnemonicParsing="false" onAction="#btnSelectOnAction" text="Select Client" />
          </children>
          <opaqueInsets>
             <Insets />
@@ -79,13 +79,14 @@
             <Insets bottom="10.0" />
          </VBox.margin>
       </HBox>
-      <TableView fx:id="clientTable" prefHeight="430.0" prefWidth="948.0">
+      <TableView fx:id="clientTable" prefHeight="900.0" prefWidth="948.0">
         <columns>
             <TableColumn fx:id="idColumn" prefWidth="99.0" text="ID" />
           <TableColumn fx:id="nameColumn" prefWidth="99.0" text="Name" />
           <TableColumn fx:id="surnameColumn" prefWidth="85.0" text="Surname" />
             <TableColumn fx:id="phoneColumn" prefWidth="73.0" text="Phone" />
             <TableColumn fx:id="countryColumn" prefWidth="89.0" text="Country" />
+            <TableColumn fx:id="genderColumn" prefWidth="75.0" text="Gender" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

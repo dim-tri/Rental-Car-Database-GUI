@@ -5,8 +5,9 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import util.PopUpController;
 
-public class EditCarController {
+public class EditCarController extends PopUpController{
 
 
 	//Apply Button Action Handler
@@ -14,7 +15,10 @@ public class EditCarController {
 	
 	//Cancel button, Closes Window
 	public void btnCancelEditOnAction(ActionEvent event) throws IOException{
+		System.out.println("The table is:" + this.getParent().GetTable());//
+		
 		((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+
 	}	
 	
 }

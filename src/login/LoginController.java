@@ -12,12 +12,13 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import util.FxmlPath;
+import util.PopUpController;
 import util.PopUpWindow;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
-public class LoginController{
+public class LoginController extends PopUpController{
 	
 	@FXML
 	private Button btnCancel;
@@ -67,7 +68,7 @@ public class LoginController{
 			window.setOnCloseRequest(new EventHandler<WindowEvent>() {
 		          public void handle(WindowEvent event) {
 		        	//Show Exit Confirmation Window
-		      		Alert alert = new Alert(AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+		      		Alert alert = new Alert(AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.CANCEL);
 		      		alert.setTitle("Exit Confirmation");
 		      		alert.setHeaderText("Are you sure you want to quit?");
 		      		alert.showAndWait();
